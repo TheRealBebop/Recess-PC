@@ -7,8 +7,8 @@ public class ZombieSounds : MonoBehaviour
 
     [SerializeField] AudioClip[] zombieSounds;
     [SerializeField] AudioSource source;
-    ZombombHealth zombombHealth;
-    EnemyHealth enemyHealth;
+    [SerializeField] ZombombHealth zombombHealth;
+    [SerializeField] EnemyHealth enemyHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +20,19 @@ public class ZombieSounds : MonoBehaviour
     public void PlayZombieSounds()
     {
         AudioClip clip = zombieSounds[UnityEngine.Random.Range(0, zombieSounds.Length)];
-        if(!zombombHealth.IsDead() || !enemyHealth.IsDead())
+        if(enemyHealth == null)
         {
-            source.PlayOneShot(clip);
+            if(!zombombHealth.IsDead())
+            {
+                source.PlayOneShot(clip);
+            }
+        }
+        else if (zombombHealth == null)
+        {
+            if (!enemyHealth.IsDead())
+            {
+                source.PlayOneShot(clip);
+            }
         }
     }
 }
