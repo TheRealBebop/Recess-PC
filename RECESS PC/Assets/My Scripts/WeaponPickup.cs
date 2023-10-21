@@ -7,6 +7,8 @@ public class WeaponPickup : MonoBehaviour
 {
     [SerializeField] Weapon gun;
     public UnityEvent pickupDisplay;
+    [SerializeField] WeaponSwitcher weaponSwitcher;
+    [SerializeField] WeaponIdentifier weaponIdentifier;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +20,8 @@ public class WeaponPickup : MonoBehaviour
             pickupDisplay.Invoke();
             gun.EquipWeapon();
             gun.pickedUp = true;
+            weaponSwitcher.numberOfWeapons++;
+            weaponIdentifier.Identified();
             Destroy(gameObject);
         }
     }

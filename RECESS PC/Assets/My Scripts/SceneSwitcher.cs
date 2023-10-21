@@ -32,7 +32,15 @@ public class SceneSwitcher : MonoBehaviour
         playerscript = FindObjectOfType<Player>();
         scene = SceneManager.GetActiveScene();
         currentSceneIndex = scene.buildIndex;
-        enterKey.action.performed += Teleport;
+        //enterKey.action.performed += Teleport;
+    }
+
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Teleport();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -75,7 +83,7 @@ public class SceneSwitcher : MonoBehaviour
         }
     }
 
-    public void Teleport(InputAction.CallbackContext context)
+    public void Teleport()
     {
         if (sceneChange && unlockedButtonPromptCanvas == true)
         {

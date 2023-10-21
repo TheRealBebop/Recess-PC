@@ -10,7 +10,7 @@ public class LadderChanger : MonoBehaviour
     [SerializeField] GameObject enterSchoolSceneChanger;
     [SerializeField] public bool ladderChange = false;
     [SerializeField] public Canvas placeLadderButtonPromptCanvas;
-    [SerializeField] InputActionReference enterKey;
+    //[SerializeField] InputActionReference enterKey;
     // [SerializeField] GameObject firstFloorLights;
     private void Start()
     {
@@ -18,7 +18,7 @@ public class LadderChanger : MonoBehaviour
         ladderChange = false;
         upLadder.SetActive(false);
         placeLadderButtonPromptCanvas.enabled = false;
-        enterKey.action.performed += PlaceLadder;
+        //enterKey.action.performed += PlaceLadder;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,7 +36,15 @@ public class LadderChanger : MonoBehaviour
         placeLadderButtonPromptCanvas.enabled = false;
     }
 
-    public void PlaceLadder(InputAction.CallbackContext context)
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            PlaceLadder();
+        }
+    }
+
+    public void PlaceLadder()
     {
         if (ladderChange && placeLadderButtonPromptCanvas == true)
         {

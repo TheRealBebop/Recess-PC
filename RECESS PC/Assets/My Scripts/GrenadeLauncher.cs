@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class GrenadeLauncher : MonoBehaviour
 {
@@ -25,14 +26,15 @@ public class GrenadeLauncher : MonoBehaviour
 
     private void Start()
     {
-        fireActionReference.action.performed += OnFired;
+        //fireActionReference.action.performed += OnFired;
         gunshotSound = GetComponent<AudioSource>();
         // fire.performed += OnFired;
         // fire.canceled += OnFired;
         // fire.Enable();
         // ammoSlot = GetComponent<Ammo>();
     }
-    public void OnFired(InputAction.CallbackContext context)
+
+    public void OnFired()
     {
         Debug.Log("trigger pressed");
         if (gameObject.activeSelf)
@@ -67,6 +69,13 @@ public class GrenadeLauncher : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (gameObject.activeSelf)
+            {
+                StartCoroutine(Shoot());
+            }
+        }
         DisplayAmmo();
     }
 

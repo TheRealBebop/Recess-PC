@@ -48,7 +48,6 @@ public class ZombombHealth : MonoBehaviour
             }
             isDead = true;
             Destroy(this);
-            Destroy(ai);
             Destroy(explode);
             Destroy(attack);
             Destroy(sounds);

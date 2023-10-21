@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     public bool generatorTurnedOn;
     private void Start()
     {
-        healthText.text = "Health: " + playerHealth.ToString();
+        healthText.text = playerHealth.ToString();
         scoreText.text = "Score: " + score.ToString();
     }
     public void TakeDamage(float enemyDamage)

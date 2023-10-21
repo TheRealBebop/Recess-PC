@@ -24,10 +24,4 @@ public class PickupCanvas : MonoBehaviour
         yield return new WaitForSeconds(displayTime);
         pickupCanvas.enabled = false;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

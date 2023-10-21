@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     public int currentAmmo;
     [SerializeField] float timeBetweenShots = 0.5f;
     [SerializeField] TextMeshProUGUI ammoText;
-    [SerializeField] InputActionReference fireActionReference;
+    //[SerializeField] InputActionReference fireActionReference;
     public bool canShoot = true;
     public AudioSource gunshotSound;
     public bool triggerPressed = false;
@@ -30,19 +30,29 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        fireActionReference.action.performed += OnFired;
+        //fireActionReference.action.performed += OnFired;
         gunshotSound = GetComponent<AudioSource>();
         // fire.performed += OnFired;
         // fire.canceled += OnFired;
         // fire.Enable();
         // ammoSlot = GetComponent<Ammo>();
     }
-    public void OnFired(InputAction.CallbackContext context)
+
+    void Update()
     {
-        triggerPressed = true; /*context.ReadValueAsButton();*/
-        Debug.Log("trigger pressed");
-        if (gameObject.activeSelf)
-            StartCoroutine(Shoot());
+        currentAmmo = ammoScript.GetAmmoAmount(ammoType);
+        DisplayAmmo();
+        if(Input.GetButtonDown("Fire1"))
+        {
+            if (gameObject.activeSelf)
+            {
+                StartCoroutine(Shoot());
+            }
+        }
+        //     if (triggerPressed == true && canShoot == true)
+        //     {
+        //         StartCoroutine(Shoot());
+        //     }
     }
 
     IEnumerator Shoot()
@@ -59,15 +69,6 @@ public class Weapon : MonoBehaviour
         }
         yield return new WaitForSeconds(timeBetweenShots);
         canShoot = false;
-    }
-    void Update()
-    {
-        currentAmmo = ammoScript.GetAmmoAmount(ammoType);
-        DisplayAmmo();
-        //     if (triggerPressed == true && canShoot == true)
-        //     {
-        //         StartCoroutine(Shoot());
-        //     }
     }
 
     private void DisplayAmmo()
@@ -89,7 +90,10 @@ public class Weapon : MonoBehaviour
 
     public void EquipWeapon()
     {
-        pickedUp = true;
+        if(equippedByDefault == false)
+        {
+            pickedUp = true;
+        }
     }
 
     private void ProcessRayCast()
