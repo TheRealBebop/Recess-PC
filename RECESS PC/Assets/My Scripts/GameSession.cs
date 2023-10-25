@@ -10,7 +10,7 @@ public class GameSession : MonoBehaviour
     [SerializeField] int score = 0;
 
     [SerializeField] TextMeshProUGUI healthText;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] public TextMeshProUGUI scoreText;
     DeathHandler loadGameOver;
 
     private void Awake()
@@ -26,13 +26,13 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Start()
     {
         healthText.text = playerHealth.ToString();
         scoreText.text = "Kill Count: " + score.ToString();
     }
 
-    private void Update()
+    public void Update()
     {
         healthText.text = playerHealth.ToString();
         scoreText.text = "Kill Count: " + score.ToString();

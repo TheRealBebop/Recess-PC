@@ -14,21 +14,26 @@ public class Player : MonoBehaviour
     [SerializeField] ParticleSystem smoke;
     [SerializeField] AudioSource wallExplosionSound;
     [SerializeField] TextMeshProUGUI finalScoreText;
+    [SerializeField] DisplayDamage blood;
     DeathHandler loadGameOver;
     public bool isDead = false;
     public bool generatorTurnedOn;
+
     private void Start()
     {
         healthText.text = playerHealth.ToString();
         scoreText.text = "Score: " + score.ToString();
+        loadGameOver = FindObjectOfType<DeathHandler>();
+        blood = GetComponent<DisplayDamage>();
     }
+
     public void TakeDamage(float enemyDamage)
     {
         playerHealth -= enemyDamage;
         if (playerHealth <= 0)
         {
             isDead = true;
-            loadGameOver = FindObjectOfType<DeathHandler>();
+            blood.impactCanvas.enabled = false;
             loadGameOver.HandleDeath();
             Debug.Log("Yer dead");
             // Debug.Log("Number of TRIANGLES IN THE SCENE:" + UnityEditor.UnityStats.triangles);
@@ -52,6 +57,11 @@ public class Player : MonoBehaviour
             Debug.Log("WALL FALLEN SOUND");
             generatorTurnedOn = false;
         }
+    }
+
+    public bool IsPlayerDead()
+    { 
+        return isDead; 
     }
 
     public void DeleteDuplicates()

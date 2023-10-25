@@ -51,13 +51,13 @@ public class WeaponSwitcher : MonoBehaviour
     {
         if(Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if(currentWeapon > numberOfWeapons - 1)
+            if(currentWeapon >= numberOfWeapons - 1)
             {
                 currentWeapon = 0;
             }
             else
             {
-                if(numberOfWeapons > 1)
+                if(currentWeapon < numberOfWeapons - 1)
                 {
                     currentWeapon++;
                 }

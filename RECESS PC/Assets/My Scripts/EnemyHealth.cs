@@ -24,6 +24,11 @@ public class EnemyHealth : MonoBehaviour
         // GameObject.DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Update()
+    {
+        IsDead();
+    }
+
     public bool IsDead()
     {
         return isDead;
@@ -32,7 +37,7 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hitPoints -= damage;
-        BroadcastMessage("OnDamageTaken");
+        //BroadcastMessage("OnDamageTaken");
         zombieBlood.Play(true);
         if (hitPoints <= 0)
         {
@@ -40,7 +45,7 @@ public class EnemyHealth : MonoBehaviour
             gameSession.AddToScore(1);
             isDead = true;
             // this.enabled = false;
-            Destroy(this);
+            //Destroy(this);
             Destroy(sounds);
             Debug.Log(gameObject.name + " has been killed");
         }
@@ -58,7 +63,7 @@ public class EnemyHealth : MonoBehaviour
             return;
         }
         isDead = true;
-        GetComponent<Animator>().SetTrigger("Die");
+        //GetComponent<Animator>().SetTrigger("Die");
         navMeshAgent.enabled = false;
         ai.enabled = false;
     }

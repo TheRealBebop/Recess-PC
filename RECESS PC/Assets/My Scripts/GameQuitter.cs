@@ -12,20 +12,36 @@ public class GameQuitter : MonoBehaviour
     //     {
     //         enemiesPersist = FindObjectOfType<ScenePersistForEnemiesAndPickups>().GetComponent<ScenePersistForEnemiesAndPickups>();
     //     }
-    [SerializeField] InputActionReference buttonPressedReference;
+    //[SerializeField] InputActionReference buttonPressedReference;
     public bool buttonPressed = false;
+    [SerializeField] Player player;
+
 
     private void Start()
     {
-        buttonPressedReference.action.performed += onPressed;
+        player = GetComponent<Player>();
     }
 
-    public void onPressed(InputAction.CallbackContext context)
+    private void Update()
     {
-        if (Time.timeScale == 0)
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            buttonPressed = true;
+            onPressed();
+        }
+    }
+
+    public void onPressed()
+    {
+        if (buttonPressed == true && player.IsPlayerDead() == true)
         {
             buttonPressed = true;
             QuitGame();
+        }
+        else
+        {
+            Debug.Log("Not quitting");
+            buttonPressed = false;
         }
     }
 

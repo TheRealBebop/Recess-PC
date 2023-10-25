@@ -49,3 +49,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Game Over Canvas
+    uniqueID: 1208268077
+    locked: 0

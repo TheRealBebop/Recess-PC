@@ -7,7 +7,7 @@ public class TheSwitchUp : MonoBehaviour
 {
     // [SerializeField] GameObject mesh;
     [SerializeField] GameObject circuitBreakerOn;
-    [SerializeField] InputActionReference enterKey;
+    //[SerializeField] InputActionReference enterKey;
     [SerializeField] GameObject redLights;
 
     // [SerializeField] GameObject firstFloorLights;
@@ -21,10 +21,18 @@ public class TheSwitchUp : MonoBehaviour
         lightSwitchCanvas = FindObjectOfType<LightSwitchCanvas>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerscript = FindObjectOfType<Player>();
-        enterKey.action.performed += TurnOn;
+        //enterKey.action.performed += TurnOn;
     }
 
-    public void TurnOn(InputAction.CallbackContext context)
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TurnOn();
+        }
+    }
+
+    public void TurnOn()
     {
         if (lightSwitchCanvas.buttonPromptCanvas.enabled == true)
         {
