@@ -9,9 +9,7 @@ public class SceneLoader : MonoBehaviour
 {
     //[SerializeField] InputActionReference buttonPressedReference;
     public bool buttonPressed = false;
-    [SerializeField] Player player
-        ;
-
+    [SerializeField] Player player;
     // DeathHandler playerIsDead;
 
     private void Start()

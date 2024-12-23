@@ -21,12 +21,15 @@ public class EnemyIdleState : EnemyBaseState
     {
         if (!enemy.isProvoked)
         {
+            enemy.GetComponent<Animator>().SetTrigger("Idle");
             if (Vector3.Distance(enemy.transform.position, target) < 2)
             {
                 IterateWaypointIndex(enemy);
                 UpdateDestination(enemy);
+                Debug.Log("THIS IS IDLE STATE");
             }
         }
+
 
         else if (enemy.isProvoked)
         {

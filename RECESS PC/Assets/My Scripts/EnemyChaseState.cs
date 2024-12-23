@@ -24,14 +24,16 @@ public class EnemyChaseState : EnemyBaseState
             enemy.SwitchState(enemy.attackState);
         }
 
-        else if(enemy.distanceToTarget >= navMeshAgent.stoppingDistance && enemy.distanceToTarget < enemy.chaseRange) 
+        else if (enemy.distanceToTarget >= navMeshAgent.stoppingDistance && enemy.distanceToTarget < enemy.chaseRange)
         {
             enemy.GetComponent<Animator>().SetTrigger("Move");
             FaceTarget(enemy);
             navMeshAgent.SetDestination(target.position);
         }
 
-        else if(enemy.distanceToTarget > enemy.chaseRange)
+        Debug.Log("THIS IS CHASE STATE");
+
+        if (enemy.distanceToTarget > enemy.chaseRange)
         {
             enemy.SwitchState(enemy.idleState);
             enemy.GetComponent<Animator>().SetTrigger("Idle");

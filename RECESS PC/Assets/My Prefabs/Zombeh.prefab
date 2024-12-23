@@ -449,6 +449,7 @@ GameObject:
   - component: {fileID: 1706307936}
   - component: {fileID: 1706307939}
   - component: {fileID: 1706307938}
+  - component: {fileID: 1374226717}
   m_Layer: 0
   m_Name: Zombeh
   m_TagString: Enemy
@@ -551,12 +552,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473558227045181038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 105f8f96a330df2409564c0a549c2a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRange: 6.4
+  chaseRange: 4.5
   turnSpeed: 5
   TurnOnGizmos: 1
   isProvoked: 0
@@ -594,7 +595,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473558227045181038}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee09854d812a7c540b80d5710011ad5e, type: 3}
   m_Name: 
@@ -5512,6 +5513,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1374226717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473558227045181038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d2bf9b7dc01f54c95bb1531c94a65e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
+  isProvoked: 0
+  chaseRange: 5
+  turnSpeed: 5
+  TurnOnGizmos: 1
+  distanceToTarget: 0
 --- !u!1 &473593205810725042
 GameObject:
   m_ObjectHideFlags: 0

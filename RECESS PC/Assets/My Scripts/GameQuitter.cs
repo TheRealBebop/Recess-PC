@@ -14,7 +14,7 @@ public class GameQuitter : MonoBehaviour
     //     }
     //[SerializeField] InputActionReference buttonPressedReference;
     public bool buttonPressed = false;
-    [SerializeField] Player player;
+    Player player;
 
 
     private void Start()
@@ -26,6 +26,7 @@ public class GameQuitter : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
+
             buttonPressed = true;
             onPressed();
         }
@@ -33,12 +34,13 @@ public class GameQuitter : MonoBehaviour
 
     public void onPressed()
     {
-        if (buttonPressed == true && player.IsPlayerDead() == true)
+        Debug.Log("Player is dead: "+ player.IsPlayerDead());
+        if (player.IsPlayerDead())
         {
             buttonPressed = true;
             QuitGame();
         }
-        else
+        else if (!player.IsPlayerDead())
         {
             Debug.Log("Not quitting");
             buttonPressed = false;
